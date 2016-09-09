@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Moviest</string>
 
+    <string name="facebook_app_id">1174861599242776</string>
+
     <string name="action_show_desc">Show Movie</string>
     <string name="action_update_movie">Update Movie</string>
 </resources>
