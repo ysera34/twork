@@ -24,7 +24,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="7dp">
+            android:padding="5dp">
             <TextView
                 android:id="@+id/id"
                 android:layout_width="wrap_content"
@@ -35,11 +35,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="17sp"
                 android:text="title"
                 android:id="@+id/title"
-                android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:gravity="bottom" />
 
             <TextView
                 android:layout_width="wrap_content"

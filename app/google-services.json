@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1008597709099",
+    "firebase_url": "https://twork-2daa5.firebaseio.com",
+    "project_id": "twork-2daa5",
+    "storage_bucket": "twork-2daa5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008597709099:android:b88eede658d8c89a",
+        "android_client_info": {
+          "package_name": "com.tacademy.moviest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1008597709099-fusts4v72bhukqtd5tpl2k5tl15pko15.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAvZCtg71vaAz1kM8JTg0IkCRSdxyVibo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

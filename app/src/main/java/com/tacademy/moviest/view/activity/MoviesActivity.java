@@ -12,6 +12,7 @@ import android.util.Log;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.tacademy.moviest.R;
 import com.tacademy.moviest.adapter.MovieAdapter;
 import com.tacademy.moviest.app.AppSingleton;
@@ -27,7 +28,7 @@ public class MoviesActivity extends AppCompatActivity
         implements SwipeRefreshLayout.OnRefreshListener{
 
     private String TAG = MoviesActivity.class.getSimpleName();
-    private static final String URL = "http://192.168.21.14:3000/movies";
+    private static final String URL = "http://192.168.0.4:3000/movies";
 
     private SwipeRefreshLayout swipeRefreshLayout;
     private ArrayList<MovieVO> movieVOList;
@@ -39,6 +40,9 @@ public class MoviesActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movies);
+
+        String token = FirebaseInstanceId.getInstance().getToken();
+        Log.i(TAG, "#####" + token + "#####");
 
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);

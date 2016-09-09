@@ -82,9 +82,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ItemViewHold
 
     private void showPopupMenu(View view) {
 
-        PopupMenu popupMenu = new PopupMenu(context.getApplicationContext(), view);
+        PopupMenu popupMenu = new PopupMenu(context, view);
         MenuInflater inflater = popupMenu.getMenuInflater();
         inflater.inflate(R.menu.menu_movie, popupMenu.getMenu());
+//        popupMenu.getMenuInflater().inflate(R.menu.menu_movie, popupMenu.getMenu());
         popupMenu.setOnMenuItemClickListener(new CustomMenuItemClickListener());
         popupMenu.show();
     }
@@ -97,9 +98,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ItemViewHold
         @Override
         public boolean onMenuItemClick(MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.action_play :
+                case R.id.action_show_desc :
                 Toast.makeText(context,
-                            "Play", Toast.LENGTH_SHORT).show();
+                            "Show Movie", Toast.LENGTH_SHORT).show();
                 return true;
                 case R.id.action_update_movie :
                     Toast.makeText(context,
