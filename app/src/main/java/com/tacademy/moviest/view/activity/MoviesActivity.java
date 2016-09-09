@@ -2,6 +2,7 @@ package com.tacademy.moviest.view.activity;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -42,7 +43,9 @@ public class MoviesActivity extends AppCompatActivity
         setContentView(R.layout.activity_movies);
 
         String token = FirebaseInstanceId.getInstance().getToken();
-        Log.i(TAG, "#####" + token + "#####");
+        Log.i(TAG + " : token", "#####" + token + "#####");
+        String deviceID = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        Log.i(TAG + " : deviceID", "#####" + deviceID + "#####");
 
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);

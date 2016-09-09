@@ -2,12 +2,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <item
-        android:id="@+id/action_show_desc"
-        android:orderInCategory="100"
-        android:title="@string/action_show_desc" />
-
+        android:id="@+id/movie_edit" android:title="movie edit"
+        android:icon="@drawable/ic_edit_movie"/>
     <item
-        android:id="@+id/action_update_movie"
-        android:orderInCategory="101"
-        android:title="@string/action_update_movie" />
+        android:id="@+id/movie_delete" android:title="movie delete"
+        android:icon="@drawable/ic_delete_movie" />
+
+    <!--<item-->
+        <!--android:id="@+id/action_show_desc"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="@string/action_show_desc" />-->
+
+    <!--<item-->
+        <!--android:id="@+id/action_update_movie"-->
+        <!--android:orderInCategory="101"-->
+        <!--android:title="@string/action_update_movie" />-->
+    <!--<item-->
+        <!--android:id="@+id/movie_menu"-->
+        <!--android:title="menu">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:id="@+id/movie_edit" android:title=""-->
+                <!--android:icon="@drawable/ic_edit_movie"/>-->
+            <!--<item-->
+                <!--android:id="@+id/movie_delete" android:title=""-->
+                <!--android:icon="@drawable/ic_delete_movie" />-->
+        <!--</menu>-->
+    <!--</item>-->
+
 </menu>

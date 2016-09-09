@@ -98,14 +98,22 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ItemViewHold
         @Override
         public boolean onMenuItemClick(MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.action_show_desc :
-                Toast.makeText(context,
-                            "Show Movie", Toast.LENGTH_SHORT).show();
-                return true;
-                case R.id.action_update_movie :
+//                case R.id.action_show_desc :
+//                Toast.makeText(context,
+//                            "Show Movie", Toast.LENGTH_SHORT).show();
+//                return true;
+//                case R.id.action_update_movie :
+//                    Toast.makeText(context,
+//                            "Update movie", Toast.LENGTH_SHORT).show();
+//                    return true;
+                case R.id.movie_edit :
                     Toast.makeText(context,
-                            "Update movie", Toast.LENGTH_SHORT).show();
+                            "movie_edit", Toast.LENGTH_SHORT).show();
                     return true;
+                case R.id.movie_delete :
+                    Toast.makeText(context,
+                            "movie_delete", Toast.LENGTH_SHORT).show();
+                    return  true;
             }
             return false;
         }
