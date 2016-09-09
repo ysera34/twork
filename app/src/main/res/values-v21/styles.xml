@@ -7,6 +7,13 @@
         <item name="android:windowAllowReturnTransitionOverlap">true</item>
         <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
         <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
+
+        <item name="textAppearanceSmallPopupMenu">@style/popupMenu</item>
+        <item name="android:textAppearanceSmallPopupMenu">@style/popupMenu</item>
     </style>
 
+
+    <style name="popupMenu" parent="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Small">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
 </resources>

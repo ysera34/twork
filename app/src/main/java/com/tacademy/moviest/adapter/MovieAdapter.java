@@ -1,6 +1,7 @@
 package com.tacademy.moviest.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.ListPopupWindow;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +18,7 @@ import android.widget.Toast;
 import com.tacademy.moviest.R;
 import com.tacademy.moviest.model.MovieVO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -48,7 +52,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ItemViewHold
 
         @Override
         public void onClick(View v) {
-            showPopupMenu(overflow);
+//            showPopupMenu(overflow);
+            showPopup(overflow);
         }
     }
 
@@ -78,6 +83,36 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ItemViewHold
 //                showPopupMenu(holder.overflow);
 //            }
 //        });
+    }
+
+    private void showPopup(View view) {
+        ListPopupWindow popupWindow = new ListPopupWindow(context);
+
+        List<String> data = new ArrayList<>();
+        data.add("Edit");
+        data.add("Delete");
+        ArrayAdapter adapter = new ArrayAdapter(
+                context, R.layout.popup_menu_layout, data);
+
+        popupWindow.setAnchorView(view);
+        popupWindow.setAdapter(adapter);
+        popupWindow.setWidth(300);
+        popupWindow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0 : //edit
+                        Toast.makeText(context, "Edit Movie", Toast.LENGTH_SHORT).show();
+                        editItem();
+                        break;
+                    case 1 : //delete
+                        Toast.makeText(context, "Delete Movie", Toast.LENGTH_SHORT).show();
+                        deleteItem();
+                        break;
+                }
+            }
+        });
+        popupWindow.show();
     }
 
     private void showPopupMenu(View view) {
@@ -113,10 +148,18 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ItemViewHold
                 case R.id.movie_delete :
                     Toast.makeText(context,
                             "movie_delete", Toast.LENGTH_SHORT).show();
-                    return  true;
+                    return true;
             }
             return false;
         }
+    }
+
+    public void editItem() {
+
+    }
+
+    public void deleteItem() {
+
     }
 
     @Override

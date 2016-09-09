@@ -81,7 +81,7 @@ public class MoviesActivity extends AppCompatActivity
         fetchMovies();
     }
 
-    private void fetchMovies() {
+    public void fetchMovies() {
         pDialog.setMessage("Loading Data.....");
         pDialog.show();
 
@@ -122,5 +122,13 @@ public class MoviesActivity extends AppCompatActivity
             }
         });
         AppSingleton.getInstance(getApplicationContext()).addToRequestQueue(req);
+    }
+
+    public void editMovie() {
+
+    }
+
+    public void deleteMovie() {
+
     }
 }
