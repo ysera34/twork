@@ -3,12 +3,14 @@ package com.tacademy.moviest.view.activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -18,6 +20,7 @@ import com.tacademy.moviest.R;
 import com.tacademy.moviest.adapter.MovieAdapter;
 import com.tacademy.moviest.app.AppSingleton;
 import com.tacademy.moviest.model.MovieVO;
+import com.tacademy.moviest.view.fragment.MovieSliderFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,7 +32,7 @@ public class MoviesActivity extends AppCompatActivity
         implements SwipeRefreshLayout.OnRefreshListener{
 
     private String TAG = MoviesActivity.class.getSimpleName();
-    private static final String URL = "http://192.168.0.4:3000/movies";
+    private static final String URL = "http://192.168.200.125:3000/movies";
 
     private SwipeRefreshLayout swipeRefreshLayout;
     private ArrayList<MovieVO> movieVOList;
@@ -59,13 +62,28 @@ public class MoviesActivity extends AppCompatActivity
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
+        recyclerView.addOnItemTouchListener(new MovieAdapter.RecyclerTouchListener(
+                getApplicationContext(), recyclerView, new MovieAdapter.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("movies", movieVOList);
+                bundle.putInt("position", position);
+
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                MovieSliderFragment newFragment = MovieSliderFragment.newInstance();
+                newFragment.setArguments(bundle);
+                newFragment.show(ft, "slideshow");
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
 
         swipeRefreshLayout.setOnRefreshListener(this);
 
-        /**
-         * Showing Swipe Refresh animation on activity create
-         * As animation won't start on onCreate, post runnable is used
-         */
         swipeRefreshLayout.post(new Runnable() {
                                     @Override
                                     public void run() {

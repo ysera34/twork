@@ -62,4 +62,14 @@ public class MovieVO {
         this.synopsis = synopsis;
     }
 
+    @Override
+    public String toString() {
+        return "MovieVO{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", director='" + director + '\'' +
+                ", year=" + year +
+                ", synopsis='" + synopsis + '\'' +
+                '}';
+    }
 }
