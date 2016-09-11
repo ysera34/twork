@@ -18,6 +18,7 @@ import java.util.ArrayList;
  */
 public class MoviePageAdapter extends PagerAdapter {
 
+    public static final String TAG = MoviePageAdapter.class.getSimpleName();
     Context context;
     private LayoutInflater layoutInflater;
     ArrayList<MovieVO> movieVOs;
@@ -47,18 +48,10 @@ public class MoviePageAdapter extends PagerAdapter {
         director = (TextView) view.findViewById(R.id.director);
         year = (TextView) view.findViewById(R.id.year);
         synopsis = (TextView) view.findViewById(R.id.synopsis);
-        displayMetaInfo(position);
 
+        displayMetaInfo(position);
         container.addView(view);
         return view;
-    }
-
-    private void displayMetaInfo(int position) {
-        title.setText(movieVOs.get(position).getTitle());
-//        director.setText(movieVOs.get(position).getDirector());
-//        year.setText(movieVOs.get(position).getYear());
-//        synopsis.setText(movieVOs.get(position).getSynopsis());
-
     }
 
     @Override
@@ -76,4 +69,12 @@ public class MoviePageAdapter extends PagerAdapter {
 //        super.destroyItem(container, position, object);
         container.removeView((View) object);
     }
+
+    private void displayMetaInfo(int position) {
+        title.setText(movieVOs.get(position).getTitle());
+        director.setText(movieVOs.get(position).getDirector());
+        year.setText(String.valueOf(movieVOs.get(position).getYear()));
+        synopsis.setText(movieVOs.get(position).getSynopsis());
+    }
+
 }
