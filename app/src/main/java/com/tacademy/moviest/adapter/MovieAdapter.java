@@ -17,9 +17,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.tacademy.moviest.R;
+import com.tacademy.moviest.app.AppSingleton;
 import com.tacademy.moviest.model.MovieVO;
 
+import org.json.JSONObject;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,6 +96,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ItemViewHold
     }
 
     private void showPopup(View view) {
+
         ListPopupWindow popupWindow = new ListPopupWindow(context);
 
         List<String> data = new ArrayList<>();
@@ -109,7 +118,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ItemViewHold
                         break;
                     case 1 : //delete
                         Toast.makeText(context, "Delete Movie", Toast.LENGTH_SHORT).show();
-                        deleteItem();
+
+//                        deleteItem();
                         break;
                 }
             }
@@ -160,8 +170,22 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ItemViewHold
 
     }
 
-    public void deleteItem() {
+    public void deleteItem(int position) {
+        String URL = "http://192.168.21.14:3000/movies";
+        URL += File.separator + position;
+        JsonObjectRequest req = new JsonObjectRequest(Request.Method.DELETE, URL,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
 
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        AppSingleton.getInstance(context).addToRequestQueue(req);
     }
 
     @Override
